@@ -2,6 +2,8 @@ package com.fanhl.zoomviewpager.sample
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -15,10 +17,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        assignViews()
+        initData()
+        refreshData()
+    }
+
+    fun assignViews() {
         PagerSnapHelper().attachToRecyclerView(recycler_view)
 
-        recycler_view.adapter = adapter
+        fab.setOnClickListener {
+            if (recycler_view.layoutManager is GridLayoutManager) {
+                recycler_view.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+            } else {
+                recycler_view.layoutManager = GridLayoutManager(this@MainActivity, 3)
+            }
+        }
+    }
 
+    fun initData() {
+        recycler_view.adapter = adapter
+    }
+
+    fun refreshData() {
         adapter.setNewData(
             List(10) {
                 "$it"
