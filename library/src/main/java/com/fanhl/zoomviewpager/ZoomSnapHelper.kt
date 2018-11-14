@@ -1,4 +1,4 @@
 package com.fanhl.zoomviewpager
 
-class ZoomHelper {
+class ZoomSnapHelper {
 }
