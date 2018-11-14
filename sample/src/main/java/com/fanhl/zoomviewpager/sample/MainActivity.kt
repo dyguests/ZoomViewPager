@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 recycler_view.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
             } else {
                 TransitionManager.beginDelayedTransition(recycler_view)
-                recycler_view.layoutManager = GridLayoutManager(this@MainActivity, 3)
+                recycler_view.layoutManager = GridLayoutManager(this@MainActivity, 2, LinearLayoutManager.HORIZONTAL, false)
             }
         }
     }
